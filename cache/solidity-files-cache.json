@@ -191,8 +191,8 @@
       ]
     },
     "D:\\Project\\Solidity\\governance_soldiity\\contracts\\ERC20Staking.sol": {
-      "lastModificationDate": 1728413208169,
-      "contentHash": "3a900107b33d0e3391d52008da5a4a81",
+      "lastModificationDate": 1728414948554,
+      "contentHash": "c9e6d5f07009b10362f32d9e4b546f83",
       "sourceName": "contracts/ERC20Staking.sol",
       "solcConfig": {
         "version": "0.8.27",
@@ -221,7 +221,8 @@
       "imports": [
         "@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "@openzeppelin/contracts/utils/math/Math.sol",
-        "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
@@ -527,6 +528,44 @@
       ],
       "artifacts": [
         "MockERC20"
+      ]
+    },
+    "D:\\Project\\Solidity\\governance_soldiity\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+      "lastModificationDate": 1728384577172,
+      "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Ownable"
       ]
     }
   }

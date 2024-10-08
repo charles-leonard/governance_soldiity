@@ -4,14 +4,15 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";  
 import "@openzeppelin/contracts/utils/math/Math.sol";  
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";  // Use ReentrancyGuard  
+import "@openzeppelin/contracts/access/Ownable.sol"; 
 
-contract Staking is ReentrancyGuard {  
+contract Staking is ReentrancyGuard, Ownable  {  
     using Math for uint256;  
 
     IERC20 public stakingToken;  
     uint256 public rewardRate; // Reward per minute  
     uint256 public totalStaked;  
-
+    address public _owner;
     struct Stake {  
         uint256 amount;  
         uint256 rewardDebt;  
@@ -20,14 +21,21 @@ contract Staking is ReentrancyGuard {
 
     mapping(address => Stake) public stakes;  
     mapping(address => uint256) public rewards;  
-    
+
     event Staked(address indexed user, uint256 amount);  
     event Withdrawn(address indexed user, uint256 amount);  
     event RewardClaimed(address indexed user, uint256 reward); 
+    event RewardRateUpdated(uint256 newRewardRate);  
 
-    constructor(IERC20 _stakingToken, uint256 _rewardRate) {  
+    constructor(IERC20 _stakingToken, uint256 _rewardRate) Ownable(msg.sender) {  
         stakingToken = _stakingToken;  
         rewardRate = _rewardRate;  
+        _owner = msg.sender;
+    }  
+
+    function setRewardRate(uint256 newRewardRate) external onlyOwner {  
+        rewardRate = newRewardRate;  
+        emit RewardRateUpdated(newRewardRate);
     }  
 
     function stake(uint256 _amount) external nonReentrant {  
