@@ -20,6 +20,10 @@ contract Staking is ReentrancyGuard {
 
     mapping(address => Stake) public stakes;  
     mapping(address => uint256) public rewards;  
+    
+    event Staked(address indexed user, uint256 amount);  
+    event Withdrawn(address indexed user, uint256 amount);  
+    event RewardClaimed(address indexed user, uint256 reward); 
 
     constructor(IERC20 _stakingToken, uint256 _rewardRate) {  
         stakingToken = _stakingToken;  
@@ -72,7 +76,7 @@ contract Staking is ReentrancyGuard {
     function calculateReward(address _user) public view returns (uint256) {  
         Stake storage userStake = stakes[_user];  
         uint256 stakingDuration = block.timestamp - userStake.lastStakedTime;  
-        uint256 pendingReward = (userStake.amount * rewardRate * stakingDuration) / 60;  
+        uint256 pendingReward = (userStake.amount * rewardRate * stakingDuration) / 3600;  
         return pendingReward;  
     }  
 }

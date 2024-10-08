@@ -191,8 +191,8 @@
       ]
     },
     "D:\\Project\\Solidity\\governance_soldiity\\contracts\\ERC20Staking.sol": {
-      "lastModificationDate": 1728369724098,
-      "contentHash": "bb764474cce84aa418a5332e5330bf73",
+      "lastModificationDate": 1728413208169,
+      "contentHash": "3a900107b33d0e3391d52008da5a4a81",
       "sourceName": "contracts/ERC20Staking.sol",
       "solcConfig": {
         "version": "0.8.27",
