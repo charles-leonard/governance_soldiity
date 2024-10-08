@@ -84,7 +84,7 @@ contract Staking is ReentrancyGuard, Ownable  {
     function calculateReward(address _user) public view returns (uint256) {  
         Stake storage userStake = stakes[_user];  
         uint256 stakingDuration = block.timestamp - userStake.lastStakedTime;  
-        uint256 pendingReward = (userStake.amount * rewardRate * stakingDuration) / 3600;  
+        uint256 pendingReward = (userStake.amount * rewardRate * 1e18 * stakingDuration) / 3600;  
         return pendingReward;  
     }  
 }
