@@ -13,9 +13,9 @@ uint256 public totalStaked;
 uint256 public lastUpdateTime;
 
 struct Stake {
-uint256 amount;
-uint256 rewardDebt;
-uint256 lastStakedTime;
+    uint256 amount;
+    uint256 rewardDebt;
+    uint256 lastStakedTime;
 }
 
 mapping(address => Stake) public stakes;
