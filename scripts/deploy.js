@@ -9,10 +9,9 @@ async function main() {
 
   const Staking = await ethers.getContractFactory("Staking");  
   const staking = await Staking.deploy(StakingTokenAddress, RewardRatePerMinute);  
-  console.log("Staking contract deployed to:", staking);  
 
-  await staking.waitForDeployment(); 
-  console.log("Staking contract deployed to:", staking.address);  
+  await staking.waitForDeployment();
+  console.log("Staking contract deployed to:", await staking.getAddress());  
 }  
 
 main()  
